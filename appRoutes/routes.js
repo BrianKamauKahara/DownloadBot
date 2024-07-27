@@ -1,11 +1,11 @@
-import express, { json } from 'express'
+import express from 'express'
 import {
     generatePost,
     generateImage,
     moderateImage,
     moderatePost,
 } from '../main.js'
-/* import { lastFile } from '../models/getLastFileMade.js' */
+
 
 const router = express.Router()
 
@@ -23,12 +23,12 @@ router.post('/moderatePost', async (req, res) => {
 })
 
 router.post('/generateImage', async (req, res) => {
-    const { desc, path } = req.body
+    const { desc } = req.body
     
-
     const ImageData = await generateImage({"image_desc":desc})
+    
     res.status(200).json(ImageData)
-    /* res.status(200) */
+
 })
 
 router.post('/moderateImage', async (req, res) => {
@@ -37,9 +37,20 @@ router.post('/moderateImage', async (req, res) => {
     res.status(200).json(status)
 })
 
+/* router.post('/download', async (req, res) => {
+    const { url } = req.body
+    downloadImage(url).then((result) => {
+        console.log(result)
+       const _path = result
+        const file = path.join(`./`, String(_path)); // Path to your file
+        console.log(file)
+        res.status(200).json({'path':file})
+    })
+   ;
+  }) */
 /* router.get('/lastImage', async (req, res) => {
     const imageName = await lastFile()
     res.status(200).json({image:imageName})
   });
- */
+ */ 
 export default router

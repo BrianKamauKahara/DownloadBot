@@ -12,18 +12,16 @@ app.use((req, res, next) => {
     next()
 })
 app.use(cors({
-    origin: 'https://displaylivebrinkkk.netlify.app', // Allow frontend origin
-    methods: ['GET', 'POST'], // Allow specific methods
-    allowedHeaders: ['Content-Type'] // Allow specific headers
+    origin: 'https://displaylivebrinkkk.netlify.app',
+    methods: ['GET', 'POST'], 
+    allowedHeaders: ['Content-Type'] 
   }))
-/* app.use(express.static(`public`))
-app.use(express.static('app'))
-app.use(express.static('src'))
- */
+
+
 app.use('/',router)
 
 
 
 app.listen(process.env.PORT, () => {
-    console.log('Listening on port 4000')
+    console.log(`Listening on port ${process.env.PORT}`)
 })

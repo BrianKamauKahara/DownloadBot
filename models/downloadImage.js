@@ -5,14 +5,19 @@ import { cwd } from 'process'
 
 
 export async function downloadImage(url) {
-  /* console.log(cwd(),'SSS') */
   const to = [await generateRandomString(),".png"].join("")
   const filepath = path.join('images', '../images', to)
+
+  const controller = new AbortController();
+  const { signal } = controller
+
   const response = await axios({
     url,
     method: 'GET',
     responseType: 'stream',
+    signal,
   });
+
   return new Promise((resolve, reject) => {
     response.data
       .pipe(fs.createWriteStream(filepath))

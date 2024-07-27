@@ -3,8 +3,6 @@ import fs from 'fs'
 import OpenAI from "openai";
 import { ChatOpenAI } from '@langchain/openai'
 import { downloadImage } from './downloadImage.js'
-import { error } from 'console';
-import sizeOf from 'image-size'
 dotenv.config()
 
 
