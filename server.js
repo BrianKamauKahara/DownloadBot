@@ -12,7 +12,8 @@ app.use((req, res, next) => {
     next()
 })
 app.use(cors({
-    origin: 'https://displaylivebrinkkk.netlify.app', // Allow frontend origin
+    /* origin: 'https://displaylivebrinkkk.netlify.app', // Allow frontend origin */
+    origin: 'http://127.0.0.1:5500',
     methods: ['GET', 'POST'], // Allow specific methods
     allowedHeaders: ['Content-Type'] // Allow specific headers
   }))
